@@ -1,0 +1,393 @@
+
+[
+    {
+        "icon": "🍒",
+        "title": "Do I have to do everything myself here?",
+        "explanation": "Use your own legs to find food.",
+        "cost": null,
+        "costCurrency": null,
+        "action": "change",
+        "parameter": "food",
+        "amount": 5
+    },
+    {
+        "icon": "🍀",
+        "title": "Lucky day",
+        "explanation": "Find a 4 leaf clover. Be luckier.",
+        "cost": null,
+        "costCurrency": null,
+        "action": "change",
+        "parameter": "luck",
+        "amount": 1
+    },
+    {
+        "icon": "⚪",
+        "title": "Push",
+        "explanation": "Lay some eggs.",
+        "cost": 2,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "eggs",
+        "amount": 5
+    },
+    {
+        "icon": "✨",
+        "title": "Bow chicka",
+        "explanation": "Be more fertile.",
+        "cost": 5,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "fertility",
+        "amount": 5
+    },
+    {
+        "icon": "⚪",
+        "title": "Push!",
+        "explanation": "Lay a lot of eggs.",
+        "cost": 20,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "eggs",
+        "amount": 20
+    },
+    {
+        "icon": "⚪",
+        "title": "Push!!!",
+        "explanation": "Lay many many eggs.",
+        "cost": 250,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "eggs",
+        "amount": 200
+    },
+    {
+        "icon": "⚪",
+        "title": "... You ok?",
+        "explanation": "Lay an absurd quantity of eggs.",
+        "cost": 1500,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "eggs",
+        "amount": 1000
+    },
+    {
+        "icon": "🍀",
+        "title": "Priorities",
+        "explanation": "Order some soldiers to be out looking for lucky clovers. Find more luck each turn.",
+        "cost": 20,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "luckBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "✨",
+        "title": "Wow wow",
+        "explanation": "Be a lot more fertile.",
+        "cost": 100,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "fertility",
+        "amount": 10
+    },
+    {
+        "icon": "✨",
+        "title": "Espíritu santo",
+        "explanation": "Get more fertile for free.",
+        "cost": null,
+        "costCurrency": null,
+        "action": "change",
+        "parameter": "fertility",
+        "amount": 1
+    },
+    {
+        "icon": "✨",
+        "title": "Balanced diet",
+        "explanation": "You're a healthy queen.",
+        "cost": 50,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "fertilityBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "✨",
+        "title": "Egg cramps",
+        "explanation": "Ouch.",
+        "cost": 1000,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "fertility",
+        "amount": 100
+    },
+    {
+        "icon": "🧠",
+        "title": "Royal study",
+        "explanation": "Build a new study chamber. Get a little smarter each turn.",
+        "cost": 10,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "intelligenceBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "🧠",
+        "title": "The smarts",
+        "explanation": "Be well fed, get smarter.",
+        "cost": 100,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "intelligence",
+        "amount": 1
+    },
+    {
+        "icon": "🧠",
+        "title": "Foresight",
+        "explanation": "You can see all misfortunes ahead.",
+        "cost": 3,
+        "costCurrency": "luck",
+        "action": "change",
+        "parameter": "intelligence",
+        "amount": 2
+    },
+    {
+        "icon": "🧠",
+        "title": "Reading club",
+        "explanation": "More ants join the book club. Your collective intelligence increases each turn.",
+        "cost": 30,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "intelligenceBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "🧠",
+        "title": "Therapist",
+        "explanation": "Let it all out.",
+        "cost": 30,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "intelligence",
+        "amount": 1
+    },
+    {
+        "icon": "🧠",
+        "title": "Pacifist",
+        "explanation": "Gain some intelligence.",
+        "cost": 3,
+        "costCurrency": "attack",
+        "action": "change",
+        "parameter": "intelligence",
+        "amount": 3
+    },
+    {
+        "icon": "🐜",
+        "title": "Recruitment",
+        "explanation": "Recruit some ants in exchange for food.",
+        "cost": 10,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "ants",
+        "amount": 10
+    },
+    {
+        "icon": "🐜",
+        "title": "Mass recruitment",
+        "explanation": "Recruit many ants in exchange for food.",
+        "cost": 100,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "ants",
+        "amount": 100
+    },
+    {
+        "icon": "🐜",
+        "title": "Sect",
+        "explanation": "Recruit a ton of ants in exchange for food.",
+        "cost": 1000,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "ants",
+        "amount": 1000
+    },
+    {
+        "icon": "🐜",
+        "title": "Intimidation",
+        "explanation": "Kindly recruit some ants.",
+        "cost": 5,
+        "costCurrency": "attack",
+        "action": "change",
+        "parameter": "ants",
+        "amount": 500
+    },
+    {
+        "icon": "🎊",
+        "title": "Cycle of life",
+        "explanation": "Some ants die, but all eggs instantly hatch this turn.",
+        "cost": 100,
+        "costCurrency": "ants",
+        "action": "hatchEggs",
+        "parameter": null,
+        "amount": null
+    },
+    {
+        "icon": "🎊",
+        "title": "Spontaneous hatching",
+        "explanation": "All eggs instantly hatch this turn.",
+        "cost": 3,
+        "costCurrency": "luck",
+        "action": "hatchEggs",
+        "parameter": null,
+        "amount": null
+    },
+    {
+        "icon": "🍒",
+        "title": "Unrelated events",
+        "explanation": "Some ants die, you get food.",
+        "cost": 3,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "food",
+        "amount": 10
+    },
+    {
+        "icon": "🍒",
+        "title": "Cookie clicker",
+        "explanation": "Get cookies, but lose some ants to fatal carpal tunnel syndrome.",
+        "cost": 20,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "food",
+        "amount": 100
+    },
+    {
+        "icon": "🍒",
+        "title": "Emprise bruise",
+        "explanation": "Your ants go adventuring and find food, but return with some scratches.",
+        "cost": 10,
+        "costCurrency": "resistance",
+        "action": "change",
+        "parameter": "food",
+        "amount": 1000
+    },
+    {
+        "icon": "🍒",
+        "title": "Emprise fatigue",
+        "explanation": "Your ants go adventuring and find food, but return very tired.",
+        "cost": 5,
+        "costCurrency": "attack",
+        "action": "change",
+        "parameter": "food",
+        "amount": 1000
+    },
+    {
+        "icon": "🗡",
+        "title": "Bad ant",
+        "explanation": "Ants gain some attack power.",
+        "cost": 20,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "attack",
+        "amount": 1
+    },
+    {
+        "icon": "🗡",
+        "title": "Rabies",
+        "explanation": "Ants gain attack power.",
+        "cost": 3,
+        "costCurrency": "intelligence",
+        "action": "change",
+        "parameter": "attack",
+        "amount": 5
+    },
+    {
+        "icon": "🗡",
+        "title": "Defense swap",
+        "explanation": "Defense is the best attack. No, wait...",
+        "cost": 3,
+        "costCurrency": "resistance",
+        "action": "change",
+        "parameter": "attack",
+        "amount": 3
+    },
+    {
+        "icon": "🗡",
+        "title": "Martial arts club",
+        "explanation": "Some ants join the training. The colony's power increases a little each turn.",
+        "cost": 30,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "attackBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "🗡",
+        "title": "Pet peeve",
+        "explanation": "You are unlucky enough that your ants are always in a bad mood, ready to strike.",
+        "cost": 10,
+        "costCurrency": "luck",
+        "action": "change",
+        "parameter": "attack",
+        "amount": 5
+    },
+    {
+        "icon": "💎",
+        "title": "Unscratchable",
+        "explanation": "Ants gain a lot of resistance.",
+        "cost": 200,
+        "costCurrency": "food",
+        "action": "change",
+        "parameter": "resistance",
+        "amount": 10
+    },
+    {
+        "icon": "💎",
+        "title": "Himbo",
+        "explanation": "Ants get nicer, dumber, and buffer.",
+        "cost": 3,
+        "costCurrency": "intelligence",
+        "action": "change",
+        "parameter": "resistance",
+        "amount": 5
+    },
+    {
+        "icon": "💎",
+        "title": "Training coach",
+        "explanation": "Order some soldiers to train your ants. The colony's resistance increases a little each turn.",
+        "cost": 30,
+        "costCurrency": "ants",
+        "action": "change",
+        "parameter": "resistanceBonus",
+        "amount": 0.1
+    },
+    {
+        "icon": "💀",
+        "title": "Death whistle",
+        "explanation": "Devise a masterplan to scare away this season's raid, if it hasn't happened yet.",
+        "cost": 3,
+        "costCurrency": "intelligence",
+        "action": "cancelRaid",
+        "parameter": null,
+        "amount": null
+    },
+    {
+        "icon": "💀",
+        "title": "Exodus",
+        "explanation": "Move to better lands. Avoid this season's raid if it hasn't happened yet, but lose some ants in the way.",
+        "cost": 50,
+        "costCurrency": "ants",
+        "action": "cancelRaid",
+        "parameter": null,
+        "amount": null
+    },
+    {
+        "icon": "💀",
+        "title": "Flu fluke",
+        "explanation": "The enemies fall sick. This season's raid gets cancelled if it hasn't happened yet.",
+        "cost": 15,
+        "costCurrency": "luck",
+        "action": "cancelRaid",
+        "parameter": null,
+        "amount": null
+    }
+]

@@ -1,0 +1,307 @@
+$background: #ac461b;
+$foreground: #c1cdbe;
+$titles: #8acc64;
+$darker: #15080865;
+$borders: #070303;
+
+$desktop-width: 40em;
+
+$border-radius: 0.5rem;
+
+@mixin bordered {
+    border: 2px solid $borders;
+    box-shadow: 4px 5px 0 $borders;
+}
+
+@mixin padded {
+    padding: 0.4rem 0.5rem;
+}
+
+@mixin border-radius {
+    border-radius:  $border-radius;
+}
+
+@mixin flex-row-wrap-center {
+    display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+}
+
+@mixin shadowed-text {
+    text-shadow: 2px 2px $borders;
+}
+
+@mixin section-title {
+    @include shadowed-text;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $darker;
+    color: $titles;
+    border-bottom: 2px solid $darker;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+:focus-visible {
+    outline: 5px solid $titles;
+}
+
+button:not(:disabled):hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 3px 0 $borders;
+}
+
+button:focus-visible,
+button:active {
+    transform: translate(4px, 5px);
+    box-shadow: none;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 0.8em;
+    background-color: $background;
+    color: $foreground;
+}
+
+section {
+    @include bordered;
+    @include border-radius;
+    background-color: $darker;
+    margin: 1rem 0.5rem;
+}
+
+details {
+    @extend section;
+    margin: 1rem;
+
+    summary {
+        @include section-title;
+        @include padded;
+        cursor: pointer;
+    }
+}
+
+hr {
+    border: 1px solid $darker;
+    margin: 0.7rem 0;
+}
+
+p {
+    margin: 0.5rem;
+}
+
+h1,
+h2,
+h3 {
+    @include padded;
+}
+
+h2,
+h3 {
+    @include section-title;
+    font-size: 1.1em;
+}
+
+h1 {
+    padding: 0.4rem 0.7rem;
+    font-size: 1.4em;
+    @include section-title;
+    border-radius: 0;
+    background-color: opacify($darker, 0.2);
+}
+
+button {
+    cursor: pointer;
+    @include padded;
+    @include border-radius;
+    @include bordered;
+    background-color: $foreground;
+    color: $borders;
+    font-weight: bold;
+
+    &:disabled {
+        cursor: auto;
+        opacity: 0.5;
+        color: $darker;
+    }
+}
+
+.card {
+    @extend section;
+    width: 14.5em;
+}
+
+.data {
+    @include shadowed-text;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $titles;
+}
+
+
+
+
+
+
+
+.info {
+    @include flex-row-wrap-center;
+
+    .help {
+        width: 100%;
+
+        @media (min-width: $desktop-width) {
+            width: 70ch;
+        }
+    }
+
+    .stats {
+        width: 100%;
+
+        p {
+            text-align: left;
+        }
+    
+        div {
+            margin: 1rem;
+            @extend section;
+        }
+
+        @media (min-width: $desktop-width) {
+            width: 70ch;
+        }
+    }
+
+    .time {
+        width: 100%;
+        display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        padding-bottom: 1rem;
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        .turn-viewer {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin: 0.5rem;
+    
+            @media (min-width: $desktop-width) {
+                flex-wrap: wrap;
+            }
+            
+            > div {
+                width: 100%;
+                display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+    
+                @media (min-width: $desktop-width) {
+                    flex-direction: row;
+                }
+            }
+    
+            .turn-viewer__turn-marker {
+                @include bordered;
+                display: flex;
+                    justify-content: center;
+                    align-items: center;
+                width: 0.5rem;
+                height: 0.5rem;
+                padding: 0.3rem;
+                margin: 8px;
+                background-color: $darker;
+                font-size: 0.8em;
+            }
+    
+            .turn-viewer__turn-marker--season-turn {
+                height: 1.3rem;
+                width: 1.3rem;
+            }
+            
+            .turn-viewer__turn-marker--hatch-turn {
+                border-radius: 100%;
+                padding: 0.4rem;
+            }
+            
+            .turn-viewer__turn-marker--done {
+                background-color: $foreground;
+                color: $background;
+            }
+            
+            .turn-viewer__turn-marker--current {
+                border-color: $foreground;
+            }
+        }
+    }
+}
+
+.deck {
+    button {
+        margin: 0.5rem 0 1.5rem 0;
+    }
+
+    > div {
+        @include flex-row-wrap-center;
+    }
+
+    .card {
+        height: 19.5em;
+    }
+}
+
+.hand {
+    .card {
+        height: 10em;
+    }
+
+    > div {
+        @include flex-row-wrap-center;
+    }
+}
+
+.results {
+    div {
+        margin: 1rem auto;
+        @extend section;
+
+        p {
+            margin: 1rem 0;
+        }
+
+        @media (min-width: $desktop-width) {
+            max-width: 50ch;
+        }
+    }
+
+    .points {
+        @extend .data;
+        font-size: 4em;
+        display: block;
+        margin: 0.6em;
+    }
+}
+
+
+@media (min-width: $desktop-width) {
+    .info {
+        flex-wrap: nowrap;
+
+        .stats,
+        .help {
+            flex-grow: 1;
+        }
+    }
+}
