@@ -1,5 +1,7 @@
 function Card({icon, title, explanation, parameter, amount, cost, costCurrency, action, inDeck, buyable}) {
     const currencyIcons = {
+        people: '👩‍👩‍👧‍👦',
+        peopleBonus: '👩‍👩‍👧‍👦',
         ants: '🐜',
         eggs: '⚪',
         food: '🍒',
@@ -18,6 +20,9 @@ function Card({icon, title, explanation, parameter, amount, cost, costCurrency, 
     let parameterFixed;
 
     switch (parameter) {
+        case 'peopleBonus':
+            parameterFixed = 'people bonus'
+            break;
         case 'fertilityBonus':
             parameterFixed = 'fertility bonus'
             break;
@@ -44,7 +49,7 @@ function Card({icon, title, explanation, parameter, amount, cost, costCurrency, 
             {inDeck ?
                 <>
                     {cost | amount ? <hr/> : <></>}
-                    {amount ? <p><b>Gain:</b> {amount} {icon}&#xfe0f; {parameterFixed}</p> : <></>}
+                    {amount ? <p><b>Gain:</b> {amount} {currencyIcons[parameter]}&#xfe0f; {parameterFixed}</p> : <></>}
                     {cost ? <p><b>Cost:</b> {cost} {currencyIcons[costCurrency]}&#xfe0f; {costCurrency}</p> : <></>}
                     {buyable ? <button onClick={action}>Take</button> : <button disabled>Take</button>}
                 </> :

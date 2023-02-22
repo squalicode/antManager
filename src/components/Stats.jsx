@@ -1,12 +1,16 @@
 import StatCounter from "./StatCounter";
 import BonusCounter from "./BonusCounter";
 
-function Stats({ ants, eggs, food, fertility, fertilityBonus, intelligence, intelligenceBonus, resistance, resistanceBonus, attack, attackBonus, luck, luckBonus }) {
+function Stats({ people, peopleBonus, ants, eggs, food, fertility, fertilityBonus, intelligence, intelligenceBonus, resistance, resistanceBonus, attack, attackBonus, luck, luckBonus }) {
     return (
         <section className="stats">
             <h2>Stats</h2>
             <div>
                 <h3>Items</h3>
+                {people ?
+                    <p><StatCounter stat='people' icon='👩‍👩‍👧‍👦' amount={people} />
+                        {peopleBonus ? <> <BonusCounter amount={peopleBonus} /></> : ''}</p> :
+                    ''}
                 <p><StatCounter stat='ants' icon='🐜' amount={ants} /></p>
                 <p><StatCounter stat='eggs' icon='⚪' amount={eggs} /></p>
                 <p><StatCounter stat='food' icon='🍒' amount={food} /></p>

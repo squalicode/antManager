@@ -1,7 +1,7 @@
 import uuid from "react-uuid";
 import Card from "./Card";
 
-function Deck({cards, actionList, food, eggs, ants, fertility, intelligence, resistance, attack, luck, turn, raid}) {
+function Deck({cards, actionList, food, eggs, ants, people, fertility, intelligence, resistance, attack, luck, turn, raid}) {
     // When it's the raid turn, only the raid card is shown and there's no button to pass the turn without taking the card
     if (raid.turn === turn) {
         return (
@@ -54,6 +54,10 @@ function Deck({cards, actionList, food, eggs, ants, fertility, intelligence, res
 
                             case 'luck':
                                 buyable = !(luck < card.cost);
+                                break;
+
+                            case 'people':
+                                buyable = !(people < card.cost);
                                 break;
                         
                             default:

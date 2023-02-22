@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <p>v. 0.15.2 (alpha): card expansion</p>
+      <p>v. 0.16 (alpha): hidden ending</p>
     );
   }
   

@@ -15,6 +15,7 @@ function App() {
 
   // Stats
   const stats = useRef({
+    people: 0,
     ants: 0,
     eggs: 0,
     food: 10,
@@ -24,6 +25,7 @@ function App() {
     attack: 1,
     luck: 1,
 
+    peopleBonus: 0,
     fertilityBonus: 0,
     intelligenceBonus: 0,
     resistanceBonus: 0,
@@ -32,7 +34,9 @@ function App() {
   });
 
   // Import cards and insert and id for each one
-  const cards = useRef(require('./cards.json').map((card, index) => {card.id = index; return card;}));
+  const cards = useRef(require('./cards.json')[0].map((card, index) => {card.id = index; return card;}));
+  const secretCards = require('./cards.json')[1].map((card, index) => {card.id = index; return card;});
+  const secretCardsAdded = useRef(false);
   // Pick the first 4 cards for the deck on the first turn
   const cardsOnDeck = useRef(cards.current.slice(0, stats.current.intelligence));
   const cardsOnHand = useRef([]);
@@ -86,17 +90,21 @@ function App() {
     },
 
     shuffleDeck: () => {
+      // Add secret cards
+      if (stats.current.intelligence >= 10 && !secretCardsAdded.current) {
+        console.log('DONE');
+        cards.current = cards.current.concat(secretCards);
+        secretCardsAdded.current = true;
+      }
       // Shuffle cards randomly
       cards.current = cards.current.reduceRight((r,_,__,s) => {
-      return (r.push(s.splice(0|Math.random()*s.length,1)[0]), r)}, []);
+        return (r.push(s.splice(0|Math.random()*s.length,1)[0]), r)}, []);
       cardsOnDeck.current = cards.current.slice(0, Math.floor(stats.current.intelligence));
     },
 
     cancelRaid: () => {
       raid.current = {
-        turn: 0,
-        attack: 0,
-        soldiers: 0
+        turn: 0
       };
     },
 
@@ -142,6 +150,13 @@ function App() {
       }
     },
 
+    worldDomination: () => {
+      // Add the amount of people in the planet
+      stats.current.people = 8000000000;
+      // Trigger results screen
+      setTurn(turnTotal);
+    },
+
     endTurn: () => {
       // Ants search for food
       actionList['searchFood']();
@@ -178,6 +193,7 @@ function App() {
       temperature.current = baseTemperatures[season.current] + turnVariation;
 
       // Turn-based bonuses
+      if (stats.current.peopleBonus) {actionList['change']('people', stats.current.peopleBonus);}
       if (stats.current.fertilityBonus) {actionList['change']('fertility', stats.current.fertilityBonus);}
       if (stats.current.intelligenceBonus) {actionList['change']('intelligence', stats.current.intelligenceBonus);}
       if (stats.current.resistanceBonus) {actionList['change']('resistance', stats.current.resistanceBonus);}
@@ -200,14 +216,18 @@ function App() {
     <>
       <h1>Ant manager</h1>
       { (turn > turnTotal) ?
-      <Results 
+      <Results
+        people={stats.current.people}
         ants={stats.current.ants}
         eggs={stats.current.eggs}
         food={stats.current.food}
         eggPointValue={eggPointValue}
-        foodPointValue={foodPointValue}/> :
+        foodPointValue={foodPointValue}
+        cardsOnHand={cardsOnHand.current}/> :
       <>
         <Info 
+          people={stats.current.people}
+          peopleBonus={stats.current.peopleBonus}
           ants={stats.current.ants}
           eggs={stats.current.eggs}
           food={stats.current.food}
@@ -236,6 +256,7 @@ function App() {
           food={stats.current.food}
           eggs={stats.current.eggs}
           ants={stats.current.ants}
+          people={stats.current.people}
           fertility={stats.current.fertility}
           intelligence={stats.current.intelligence}
           resistance={stats.current.resistance}

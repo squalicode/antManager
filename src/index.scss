@@ -292,6 +292,11 @@ button {
         display: block;
         margin: 0.6em;
     }
+
+    .secret-points {
+        @extend .points;
+        color: $foreground;
+    }
 }
 
 
