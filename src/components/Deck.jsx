@@ -8,13 +8,33 @@ function Deck({cards, actionList, food, eggs, ants, people, fertility, intellige
             <section className="deck">
                 <h2>Deck</h2>
                 <div>
-                    <div className="card">
+                    <div className="raid buyable card">
                         <h3>💀&#xfe0f; Raid</h3>
-                        <p>Lose ants and food, or resist and recruit the enemies.</p>
-                        <hr/>
-                        <p>🗡&#xfe0f; attack: {raid.attack}</p>
-                        <p>🐜&#xfe0f; soldiers: {raid.soldiers}</p>
-                        <button onClick={() => {actionList['runRaid'](); actionList['endTurn']();}}>Take</button>
+                        <div>
+                            <div>
+                                <p>Lose ants and food, or resist and recruit the enemies.</p>
+                            </div>
+                            <div>
+                                <p>🗡&#xfe0f; attack: <span class="data">{raid.attack}</span></p>
+                                <p>🐜&#xfe0f; soldiers: <span class="data">{raid.soldiers}</span></p>
+                            </div>
+                        </div>
+                        
+                        <button onClick={() => {
+                            actionList['runRaid']();
+                            actionList['buyFromDeck'](
+                                {
+                                    icon: "💀",
+                                    title: 'Raid',
+                                    explanation: <>
+                                        <p>🗡&#xfe0f; attack: {raid.attack}</p>
+                                        <p>🐜&#xfe0f; soldiers: {raid.soldiers}</p>
+                                    </>
+                                });
+                            actionList['endTurn']();
+                            }}>
+                            Take
+                        </button>
                     </div>
                 </div>
             </section>
@@ -73,12 +93,15 @@ function Deck({cards, actionList, food, eggs, ants, people, fertility, intellige
                                 () => {
                                     // Apply the card's effect
                                     actionList[card.action](card.parameter, card.amount);
-                                    // Remove card from deck and place in hand
-                                    actionList['buyFromDeck'](card.id);
-                                    // Remove the amount of things that the card costs
-                                    if (card.cost) {actionList['change'](card.costCurrency, -card.cost);}
 
-                                    actionList['endTurn']();
+                                    if(card.action !== 'worldDomination') {
+                                        // Remove the amount of things that the card costs
+                                        if (card.cost) {actionList['change'](card.costCurrency, -card.cost);}
+                                        // Place card in hand
+                                        actionList['buyFromDeck'](card);
+                                        
+                                        actionList['endTurn']();
+                                    }
                                 }
                             }
                             amount={card.amount}

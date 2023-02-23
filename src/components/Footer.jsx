@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <p>v. 0.16 (alpha): hidden ending</p>
+      <p>v. 0.17 (alpha): over the rainbow</p>
     );
   }
   

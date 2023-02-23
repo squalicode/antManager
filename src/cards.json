@@ -384,7 +384,7 @@
         {
             "icon": "💎",
             "title": "Training coach",
-            "explanation": "Order some soldiers to train your ants. The colony's resistance increases a little each turn.",
+            "explanation": "Soldiers train on Mondays. The colony's resistance increases a little each turn.",
             "cost": 30,
             "costCurrency": "ants",
             "action": "change",

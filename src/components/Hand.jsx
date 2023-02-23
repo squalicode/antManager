@@ -1,7 +1,7 @@
 import uuid from "react-uuid";
 import Card from "./Card";
 
-function Hand({ cards }) {
+function Hand({ cards, parameter }) {
     return (
         <section className="hand">
             <h2>Hand</h2>
@@ -13,6 +13,7 @@ function Hand({ cards }) {
                             icon={card.icon}
                             title={card.title}
                             explanation={card.explanation}
+                            parameter={card.parameter}
                         />
                     ) :
                     <p>No cards played yet.</p>

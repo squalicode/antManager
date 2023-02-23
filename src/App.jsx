@@ -92,7 +92,6 @@ function App() {
     shuffleDeck: () => {
       // Add secret cards
       if (stats.current.intelligence >= 10 && !secretCardsAdded.current) {
-        console.log('DONE');
         cards.current = cards.current.concat(secretCards);
         secretCardsAdded.current = true;
       }
@@ -152,9 +151,10 @@ function App() {
 
     worldDomination: () => {
       // Add the amount of people in the planet
-      stats.current.people = 8000000000;
+      // It's a string because this number is too big to be an integer
+      stats.current.people = '8000000000';
       // Trigger results screen
-      setTurn(turnTotal);
+      setTurn(turnTotal+1);
     },
 
     endTurn: () => {
@@ -206,67 +206,69 @@ function App() {
       setTurn(oldTurn => oldTurn + 1);
     },
 
-    buyFromDeck: (cardId) => {
+    buyFromDeck: (card) => {
       // Bought card gets added at the beginning of the array
-      cardsOnHand.current = [cardsOnDeck.current.find(c => c.id === cardId)].concat(cardsOnHand.current);
+      cardsOnHand.current = [card].concat(cardsOnHand.current);
     }
   }
 
   return (
     <>
       <h1>Ant manager</h1>
-      { (turn > turnTotal) ?
-      <Results
-        people={stats.current.people}
-        ants={stats.current.ants}
-        eggs={stats.current.eggs}
-        food={stats.current.food}
-        eggPointValue={eggPointValue}
-        foodPointValue={foodPointValue}
-        cardsOnHand={cardsOnHand.current}/> :
-      <>
-        <Info 
+      <div className="container">
+        { (turn > turnTotal) ?
+          <Results
           people={stats.current.people}
-          peopleBonus={stats.current.peopleBonus}
           ants={stats.current.ants}
           eggs={stats.current.eggs}
           food={stats.current.food}
-          fertility={stats.current.fertility}
-          fertilityBonus={stats.current.fertilityBonus}
-          intelligence={stats.current.intelligence}
-          intelligenceBonus={stats.current.intelligenceBonus}
-          resistance={stats.current.resistance}
-          resistanceBonus={stats.current.resistanceBonus}
-          attack={stats.current.attack}
-          attackBonus={stats.current.attackBonus}
-          luck={stats.current.luck}
-          luckBonus={stats.current.luckBonus}
-          turn={turn}
-          turnTotal={turnTotal}
-          hatchFrequency={hatchFrequency}
-          seasonFrequency={seasonFrequency}
-          season={season.current}
-          temperature={temperature.current}
-          idealTemperature={idealTemperature}
           eggPointValue={eggPointValue}
-          foodPointValue={foodPointValue}/>
-        <Deck
-          cards={cardsOnDeck.current}
-          actionList={actionList}
-          food={stats.current.food}
-          eggs={stats.current.eggs}
-          ants={stats.current.ants}
-          people={stats.current.people}
-          fertility={stats.current.fertility}
-          intelligence={stats.current.intelligence}
-          resistance={stats.current.resistance}
-          attack={stats.current.attack}
-          luck={stats.current.luck}
-          turn={turn}
-          raid={raid.current}
-          />
-        <Hand cards={cardsOnHand.current} />
-      </> }
+          foodPointValue={foodPointValue}
+          cardsOnHand={cardsOnHand.current}/> :
+        <>
+          <Info 
+            people={stats.current.people}
+            peopleBonus={stats.current.peopleBonus}
+            ants={stats.current.ants}
+            eggs={stats.current.eggs}
+            food={stats.current.food}
+            fertility={stats.current.fertility}
+            fertilityBonus={stats.current.fertilityBonus}
+            intelligence={stats.current.intelligence}
+            intelligenceBonus={stats.current.intelligenceBonus}
+            resistance={stats.current.resistance}
+            resistanceBonus={stats.current.resistanceBonus}
+            attack={stats.current.attack}
+            attackBonus={stats.current.attackBonus}
+            luck={stats.current.luck}
+            luckBonus={stats.current.luckBonus}
+            turn={turn}
+            turnTotal={turnTotal}
+            hatchFrequency={hatchFrequency}
+            seasonFrequency={seasonFrequency}
+            season={season.current}
+            temperature={temperature.current}
+            idealTemperature={idealTemperature}
+            eggPointValue={eggPointValue}
+            foodPointValue={foodPointValue}/>
+          <Deck
+            cards={cardsOnDeck.current}
+            actionList={actionList}
+            food={stats.current.food}
+            eggs={stats.current.eggs}
+            ants={stats.current.ants}
+            people={stats.current.people}
+            fertility={stats.current.fertility}
+            intelligence={stats.current.intelligence}
+            resistance={stats.current.resistance}
+            attack={stats.current.attack}
+            luck={stats.current.luck}
+            turn={turn}
+            raid={raid.current}
+            />
+          <Hand cards={cardsOnHand.current} />
+        </> }
+      </div>
       <Footer />
     </>
   );

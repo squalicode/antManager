@@ -1,20 +1,60 @@
-$background: #ac461b;
-$foreground: #c1cdbe;
-$titles: #8acc64;
-$darker: #15080865;
-$borders: #070303;
+@import url(https://fonts.bunny.net/css?family=baloo-2:500,800);
+@import url(https://fonts.bunny.net/css?family=atkinson-hyperlegible:400,700);
+
+$background: #EFE9DC;
+$foreground: #302C29;
+
+$ants: #f2be99;
+$eggs: #fff;
+$food: #ebcc92;
+$fertility: #f3d3d2;
+$intelligence: #cec1cf;
+$resistance: #b5dAd6;
+$attack: #f0a298;
+$luck: #b1d9b8;
+$event: #aaaa9a;
+$secret: #c8d2df;
 
 $desktop-width: 40em;
 
-$border-radius: 0.5rem;
+$border-radius: 10px;
+
+$deck-card-height: 17.5rem;
+
+
 
 @mixin bordered {
-    border: 2px solid $borders;
-    box-shadow: 4px 5px 0 $borders;
+    border: 2px solid $foreground;
 }
 
-@mixin padded {
-    padding: 0.4rem 0.5rem;
+@mixin shadowed-card {
+    box-shadow: 0.5rem 0.5rem 0 $foreground;
+
+    transition: all 0.3s;
+}
+
+@mixin shadowed-animation-card {
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translate(0, -1rem);
+        box-shadow: 0.5rem 1.5rem 0 $foreground;
+    }
+}
+
+@mixin shadowed-button {
+    box-shadow: 0.2rem 0.2rem 0 $foreground;
+
+    transition: all 0.3s;
+}
+
+@mixin shadowed-animation-button {
+    transition: all 0.05s;
+
+    &:hover {
+        transform: translate(0.2rem, 0.2rem);
+        box-shadow: none;
+    }
 }
 
 @mixin border-radius {
@@ -28,18 +68,13 @@ $border-radius: 0.5rem;
         justify-content: center;
 }
 
-@mixin shadowed-text {
-    text-shadow: 2px 2px $borders;
-}
-
 @mixin section-title {
-    @include shadowed-text;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: $darker;
-    color: $titles;
-    border-bottom: 2px solid $darker;
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    font-family: 'Baloo 2', sans-serif;
+    background-color: $foreground;
+    color: $background;
+    border-bottom: 2px solid $foreground;
+    border-top-left-radius: calc($border-radius - 3px);
+    border-top-right-radius: calc($border-radius - 3px);
     font-weight: bold;
 }
 
@@ -50,23 +85,14 @@ $border-radius: 0.5rem;
 }
 
 :focus-visible {
-    outline: 5px solid $titles;
-}
-
-button:not(:disabled):hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 3px 0 $borders;
-}
-
-button:focus-visible,
-button:active {
-    transform: translate(4px, 5px);
-    box-shadow: none;
+    outline: none;
+    background-color: $foreground;
+    color: $background;
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 0.8em;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 0.9em;
     background-color: $background;
     color: $foreground;
 }
@@ -74,23 +100,27 @@ body {
 section {
     @include bordered;
     @include border-radius;
-    background-color: $darker;
+    @include shadowed-button;
     margin: 1rem 0.5rem;
 }
 
 details {
     @extend section;
     margin: 1rem;
+    @include shadowed-button;
+    
 
     summary {
-        @include section-title;
-        @include padded;
+        font-weight: bold;
+        padding: 0.5rem;
+        @include border-radius;
+        
         cursor: pointer;
     }
 }
 
 hr {
-    border: 1px solid $darker;
+    border: 1px solid $foreground;
     margin: 0.7rem 0;
 }
 
@@ -101,7 +131,8 @@ p {
 h1,
 h2,
 h3 {
-    @include padded;
+    padding: 0.5em;
+    line-height: 0.9;
 }
 
 h2,
@@ -115,35 +146,87 @@ h1 {
     font-size: 1.4em;
     @include section-title;
     border-radius: 0;
-    background-color: opacify($darker, 0.2);
+    background-color: opacify($foreground, 0.2);
 }
 
 button {
     cursor: pointer;
-    @include padded;
+    padding: 0.2rem;
     @include border-radius;
     @include bordered;
-    background-color: $foreground;
-    color: $borders;
+    border-color: $foreground;
+    background-color: $background;
+    color: $foreground;
     font-weight: bold;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1em;
 
     &:disabled {
         cursor: auto;
         opacity: 0.5;
-        color: $darker;
+        border-color: $foreground;
     }
 }
 
 .card {
+    display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     @extend section;
-    width: 14.5em;
+    @include shadowed-card;
+    margin: 1.2rem 0.7rem;
+    width: 14rem;
+
+    p {
+        margin: 0;
+    }
+
+    h3 {
+        background-color: $background;
+        color: $foreground;
+    }
+
+    > div {
+        height: 100%;
+        padding: 0 0.5rem 0.5rem 0.5rem;
+
+        > div  {
+            @include border-radius;
+            background-color: $background;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+    }
+
+    button {
+        position: relative;
+        margin: 0.8rem 2rem;
+    }
+
+    button::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: -0.5rem;
+        width: calc(100% + 1rem);
+        height: $deck-card-height;
+    }
+
+    > div:last-of-type {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
+}
+
+.card.buyable:hover {
+    @include shadowed-animation-card;
 }
 
 .data {
-    @include shadowed-text;
+    font-family: 'Baloo 2', sans-serif;
     font-size: 1.2em;
     font-weight: bold;
-    color: $titles;
+    color: $foreground;
 }
 
 
@@ -214,6 +297,7 @@ button {
             }
     
             .turn-viewer__turn-marker {
+                font-family: 'Baloo 2', sans-serif;
                 @include bordered;
                 display: flex;
                     justify-content: center;
@@ -222,7 +306,7 @@ button {
                 height: 0.5rem;
                 padding: 0.3rem;
                 margin: 8px;
-                background-color: $darker;
+                background-color: $background;
                 font-size: 0.8em;
             }
     
@@ -242,29 +326,80 @@ button {
             }
             
             .turn-viewer__turn-marker--current {
-                border-color: $foreground;
+                outline: 3px solid $foreground;
             }
         }
     }
 }
 
+.🐜 {
+    background-color: $ants;
+}
+
+.⚪ {
+    background-color: $eggs;
+}
+
+.🍒 {
+    background-color: $food;
+}
+
+.✨ {
+    background-color: $fertility;
+}
+
+.🧠 {
+    background-color: $intelligence;
+}
+
+.💎 {
+    background-color: $resistance;
+}
+
+.🗡 {
+    background-color: $attack;
+}
+
+.🍀{
+    background-color: $luck;
+}
+
+.🎊,
+.💀,
+.raid {
+    background-color: $event;
+}
+
+.👩‍👩‍👧‍👦,
+.🌏 {
+    background-color: $secret;
+}
+
 .deck {
-    button {
-        margin: 0.5rem 0 1.5rem 0;
+    > button {
+        margin: 1rem 0 2rem 0;
+        padding: 0.7rem 1.1rem;
+        @include shadowed-button;
+        @include shadowed-animation-button;
     }
 
     > div {
+        padding: 1rem;
         @include flex-row-wrap-center;
     }
 
     .card {
-        height: 19.5em;
+        height: $deck-card-height;
+    }
+
+    .card:not(.buyable) {
+        opacity: 0.6;
     }
 }
 
 .hand {
     .card {
-        height: 10em;
+        height: 10rem;
     }
 
     > div {
@@ -288,7 +423,7 @@ button {
 
     .points {
         @extend .data;
-        font-size: 4em;
+        font-size: 3em;
         display: block;
         margin: 0.6em;
     }
@@ -301,6 +436,10 @@ button {
 
 
 @media (min-width: $desktop-width) {
+    .container {
+        padding: 0.5em 3.5em;
+    }
+
     .info {
         flex-wrap: nowrap;
 
