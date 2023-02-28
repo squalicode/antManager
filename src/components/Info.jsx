@@ -2,11 +2,12 @@ import Help from "./Help";
 import Stats from "./Stats";
 import Time from "./Time";
 
-function Info({ people, peopleBonus, ants, eggs, food, fertility, fertilityBonus, intelligence, intelligenceBonus, resistance, resistanceBonus, attack, attackBonus, luck, luckBonus, turn, turnTotal, hatchFrequency, seasonFrequency, season, temperature, idealTemperature, eggPointValue, foodPointValue }) {
+function Info({ svgs, people, peopleBonus, ants, eggs, food, fertility, fertilityBonus, intelligence, intelligenceBonus, resistance, resistanceBonus, attack, attackBonus, luck, luckBonus, turn, turnTotal, hatchFrequency, seasonFrequency, season, temperature, idealTemperature, eggPointValue, foodPointValue }) {
     return (
       <div className="info">
-        <Help turnTotal={turnTotal} eggPointValue={eggPointValue} foodPointValue={foodPointValue}/>
+        <Help svgs={svgs} turnTotal={turnTotal} eggPointValue={eggPointValue} foodPointValue={foodPointValue}/>
         <Stats
+          svgs={svgs}
           people={people}
           peopleBonus={peopleBonus}
           ants={ants}
@@ -24,6 +25,7 @@ function Info({ people, peopleBonus, ants, eggs, food, fertility, fertilityBonus
           luckBonus={luckBonus}
         />
         <Time
+          svgs={svgs}
           turn={turn}
           turnTotal={turnTotal}
           hatchFrequency={hatchFrequency}

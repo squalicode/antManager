@@ -1,10 +1,12 @@
+import uuid from "react-uuid";
+
 import TurnCounter from "./TurnCounter";
 
-function Time({ turn, turnTotal, hatchFrequency, seasonFrequency, season, temperature, idealTemperature }) {
+function Time({ svgs, turn, turnTotal, hatchFrequency, seasonFrequency, season, temperature, idealTemperature }) {
     let temperatureVisual = (Math.floor(temperature - idealTemperature)/5 !== 0) ?
-        (Math.floor(temperature - idealTemperature)/5 > 0) ? 
-            '🥵'.repeat(Math.floor(temperature - idealTemperature)/5) :
-            '🥶'.repeat(Math.abs(Math.floor(temperature - idealTemperature)/5)) :
+        (Math.floor(temperature - idealTemperature)/5 > 0) ?
+            Array.from(' '.repeat(Math.floor(temperature - idealTemperature)/5)).fill(svgs.hot) :
+            Array.from(' '.repeat(Math.floor(idealTemperature - temperature)/5)).fill(svgs.cold) :
         '';
 
 
@@ -12,12 +14,12 @@ function Time({ turn, turnTotal, hatchFrequency, seasonFrequency, season, temper
     return (
         <section className="time">
           <h2>Time</h2>
-            <TurnCounter turn={turn} turnTotal={turnTotal} hatchFrequency={hatchFrequency} seasonFrequency={seasonFrequency} />
+            <TurnCounter svgs={svgs} turn={turn} turnTotal={turnTotal} hatchFrequency={hatchFrequency} seasonFrequency={seasonFrequency} />
             <hr/>
             <p>Season: <span className="data">{season}</span></p>
             <p>
                 Temperature: <span className="data">{temperature}</span>°C<br/>
-                <span className="data">{temperatureVisual}</span>
+                {temperatureVisual.length? <span className="data" key={uuid()}>{temperatureVisual}</span> : <></>}
             </p>
         </section>
     );

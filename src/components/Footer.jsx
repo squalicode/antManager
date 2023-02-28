@@ -1,6 +1,6 @@
 function Footer() {
     return (
-      <p>v. 0.17 (alpha): over the rainbow</p>
+      <p>v. 0.18 (alpha): no mo mojis</p>
     );
   }
   

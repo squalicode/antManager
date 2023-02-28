@@ -7,12 +7,12 @@ $foreground: #302C29;
 $ants: #f2be99;
 $eggs: #fff;
 $food: #ebcc92;
-$fertility: #f3d3d2;
-$intelligence: #cec1cf;
+$fertility: #cec1cf;
+$intelligence: #f3d3d2;
 $resistance: #b5dAd6;
 $attack: #f0a298;
 $luck: #b1d9b8;
-$event: #aaaa9a;
+$event: #bfbfb1;
 $secret: #c8d2df;
 
 $desktop-width: 40em;
@@ -206,10 +206,10 @@ button {
     button::after {
         content: '';
         position: absolute;
-        bottom: -0.5rem;
-        left: -0.5rem;
-        width: calc(100% + 1rem);
-        height: $deck-card-height;
+        bottom: -1.5rem;
+        left: -2.5rem;
+        width: calc(100% + 5rem);
+        height: calc($deck-card-height + 1rem);
     }
 
     > div:last-of-type {
@@ -332,47 +332,103 @@ button {
     }
 }
 
-.🐜 {
+.ants {
     background-color: $ants;
 }
 
-.⚪ {
+.eggs {
     background-color: $eggs;
 }
 
-.🍒 {
+.food {
     background-color: $food;
 }
 
-.✨ {
+.fertility {
     background-color: $fertility;
 }
 
-.🧠 {
+.intelligence {
     background-color: $intelligence;
 }
 
-.💎 {
+.resistance {
     background-color: $resistance;
 }
 
-.🗡 {
+.attack {
     background-color: $attack;
 }
 
-.🍀{
+.luck{
     background-color: $luck;
 }
 
-.🎊,
-.💀,
+.eclosion,
 .raid {
     background-color: $event;
 }
 
-.👩‍👩‍👧‍👦,
-.🌏 {
+.people,
+.earth {
     background-color: $secret;
+}
+
+svg {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: text-bottom;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.svg-color-stroke {
+    stroke: $foreground;
+}
+
+.svg-color-stroke-fill {
+    fill: $foreground;
+}
+
+.svg-color-ants {
+    fill: $ants;
+}
+
+.svg-color-eggs {
+    fill: $eggs;
+}
+
+.svg-color-food {
+    fill: $food;
+}
+
+.svg-color-fertility {
+    fill: $fertility;
+}
+
+.svg-color-intelligence {
+    fill: $intelligence;
+}
+
+.svg-color-resistance {
+    fill: $resistance;
+}
+
+.svg-color-attack {
+    fill: $attack;
+}
+
+.svg-color-luck {
+    fill: $luck;
+}
+
+.svg-color-event {
+    fill: $event;
+}
+
+.svg-color-secret {
+    fill: $secret;
 }
 
 .deck {

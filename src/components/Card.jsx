@@ -1,21 +1,4 @@
-function Card({icon, title, explanation, parameter, amount, cost, costCurrency, action, inDeck, buyable}) {
-    const currencyIcons = {
-        people: '👩‍👩‍👧‍👦',
-        peopleBonus: '👩‍👩‍👧‍👦',
-        ants: '🐜',
-        eggs: '⚪',
-        food: '🍒',
-        fertility: '✨',
-        fertilityBonus: '✨',
-        intelligence: '🧠',
-        intelligenceBonus: '🧠',
-        resistance: '💎',
-        resistanceBonus: '💎',
-        attack: '🗡',
-        attackBonus: '🗡',
-        luck: '🍀',
-        luckBonus: '🍀'
-    };
+function Card({svgs, icon, title, explanation, parameter, amount, cost, costCurrency, action, inDeck, buyable}) {
 
     let parameterFixed;
 
@@ -47,7 +30,7 @@ function Card({icon, title, explanation, parameter, amount, cost, costCurrency, 
 
     return (
         <div className={`${icon} ${buyable? 'buyable' : ''} card`}>
-            <h3>{icon}&#xfe0f; {title}</h3>
+            <h3>{svgs[icon]} {title}</h3>
 
             <div>
                 <div>
@@ -58,8 +41,8 @@ function Card({icon, title, explanation, parameter, amount, cost, costCurrency, 
                         {cost | amount ?
                         <>
                             <div>
-                                {amount ? <p><b>Gain:</b> <span className="data">{amount}</span> {currencyIcons[parameter]}&#xfe0f; {parameterFixed}</p> : <></>}
-                                {cost ? <p><b>Cost:</b> <span className="data">{cost}</span> {currencyIcons[costCurrency]}&#xfe0f; {costCurrency}</p> : <></>}
+                                {amount ? <p><b>Gain:</b> <span className="data">{amount}</span> {svgs[parameterFixed.split(' ')[0]]}&#xfe0f; {parameterFixed}</p> : <></>}
+                                {cost ? <p><b>Cost:</b> <span className="data">{cost}</span> {svgs[costCurrency]}&#xfe0f; {costCurrency}</p> : <></>}
                             </div>
                         </>
                         : ''}

@@ -2,7 +2,7 @@
 [
     [
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Do I have to do everything myself here?",
             "explanation": "Use your own legs to find food.",
             "cost": null,
@@ -12,7 +12,7 @@
             "amount": 5
         },
         {
-            "icon": "🍀",
+            "icon": "luck",
             "title": "Lucky day",
             "explanation": "Find a 4 leaf clover. Be luckier.",
             "cost": null,
@@ -22,7 +22,7 @@
             "amount": 1
         },
         {
-            "icon": "⚪",
+            "icon": "eggs",
             "title": "Push",
             "explanation": "Lay some eggs.",
             "cost": 2,
@@ -32,7 +32,7 @@
             "amount": 5
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Bow chicka",
             "explanation": "Be more fertile.",
             "cost": 5,
@@ -42,7 +42,7 @@
             "amount": 5
         },
         {
-            "icon": "⚪",
+            "icon": "eggs",
             "title": "Push!",
             "explanation": "Lay a lot of eggs.",
             "cost": 20,
@@ -52,7 +52,7 @@
             "amount": 20
         },
         {
-            "icon": "⚪",
+            "icon": "eggs",
             "title": "Push!!!",
             "explanation": "Lay many many eggs.",
             "cost": 250,
@@ -62,7 +62,7 @@
             "amount": 200
         },
         {
-            "icon": "⚪",
+            "icon": "eggs",
             "title": "... You ok?",
             "explanation": "Lay an absurd quantity of eggs.",
             "cost": 1500,
@@ -72,7 +72,7 @@
             "amount": 1000
         },
         {
-            "icon": "🍀",
+            "icon": "luck",
             "title": "Priorities",
             "explanation": "Order some soldiers to be out looking for lucky clovers. Find more luck each turn.",
             "cost": 20,
@@ -82,7 +82,7 @@
             "amount": 0.1
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Wow wow",
             "explanation": "Be a lot more fertile.",
             "cost": 100,
@@ -92,7 +92,7 @@
             "amount": 10
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Espíritu santo",
             "explanation": "Get more fertile for free.",
             "cost": null,
@@ -102,7 +102,7 @@
             "amount": 1
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Balanced diet",
             "explanation": "You're a healthy queen.",
             "cost": 50,
@@ -112,7 +112,7 @@
             "amount": 0.1
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Egg cramps",
             "explanation": "Ouch.",
             "cost": 1000,
@@ -122,7 +122,7 @@
             "amount": 100
         },
         {
-            "icon": "✨",
+            "icon": "fertility",
             "title": "Battery saving",
             "explanation": "Brains burn a lot of energy, you decide it's better spent on eggs.",
             "cost": 3,
@@ -132,7 +132,7 @@
             "amount": 0.2
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Royal study",
             "explanation": "Build a new study chamber. Get a little smarter each turn.",
             "cost": 10,
@@ -142,7 +142,7 @@
             "amount": 0.1
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "The smarts",
             "explanation": "Be well fed, get smarter.",
             "cost": 100,
@@ -152,7 +152,7 @@
             "amount": 1
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Foresight",
             "explanation": "You can see all misfortunes ahead.",
             "cost": 3,
@@ -162,7 +162,7 @@
             "amount": 2
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Reading club",
             "explanation": "More ants join the book club. Your collective intelligence increases each turn.",
             "cost": 30,
@@ -172,7 +172,7 @@
             "amount": 0.1
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Therapist",
             "explanation": "Let it all out.",
             "cost": 30,
@@ -182,7 +182,7 @@
             "amount": 1
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Pacifist",
             "explanation": "Gain some intelligence.",
             "cost": 3,
@@ -192,7 +192,7 @@
             "amount": 3
         },
         {
-            "icon": "🧠",
+            "icon": "intelligence",
             "title": "Hivemind",
             "explanation": "Quantity makes aptitude.",
             "cost": 1000,
@@ -202,7 +202,7 @@
             "amount": 10
         },
         {
-            "icon": "🐜",
+            "icon": "ants",
             "title": "Recruitment",
             "explanation": "Recruit some ants in exchange for food.",
             "cost": 10,
@@ -212,7 +212,7 @@
             "amount": 10
         },
         {
-            "icon": "🐜",
+            "icon": "ants",
             "title": "Mass recruitment",
             "explanation": "Recruit many ants in exchange for food.",
             "cost": 100,
@@ -222,7 +222,7 @@
             "amount": 100
         },
         {
-            "icon": "🐜",
+            "icon": "ants",
             "title": "Sect",
             "explanation": "Recruit a ton of ants in exchange for food.",
             "cost": 1000,
@@ -232,7 +232,7 @@
             "amount": 1000
         },
         {
-            "icon": "🐜",
+            "icon": "ants",
             "title": "Intimidation",
             "explanation": "Kindly recruit some ants.",
             "cost": 5,
@@ -242,7 +242,7 @@
             "amount": 500
         },
         {
-            "icon": "🎊",
+            "icon": "eclosion",
             "title": "Cycle of life",
             "explanation": "Some ants die, but all eggs instantly hatch this turn.",
             "cost": 100,
@@ -252,7 +252,7 @@
             "amount": null
         },
         {
-            "icon": "🎊",
+            "icon": "eclosion",
             "title": "Spontaneous hatching",
             "explanation": "All eggs instantly hatch this turn.",
             "cost": 3,
@@ -262,7 +262,7 @@
             "amount": null
         },
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Unrelated events",
             "explanation": "Some ants die, you get food.",
             "cost": 3,
@@ -272,7 +272,7 @@
             "amount": 10
         },
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Cookie clicker",
             "explanation": "Get cookies, but lose some ants to fatal carpal tunnel syndrome.",
             "cost": 20,
@@ -282,7 +282,7 @@
             "amount": 100
         },
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Emprise bruise",
             "explanation": "Your ants go adventuring and find food, but return with some scratches.",
             "cost": 10,
@@ -292,7 +292,7 @@
             "amount": 1000
         },
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Emprise fatigue",
             "explanation": "Your ants go adventuring and find food, but return very tired.",
             "cost": 5,
@@ -302,7 +302,7 @@
             "amount": 1000
         },
         {
-            "icon": "🍒",
+            "icon": "food",
             "title": "Joseph",
             "explanation": "Your nice neighbour brings you food.",
             "cost": null,
@@ -312,7 +312,7 @@
             "amount": 20
         },
         {
-            "icon": "🗡",
+            "icon": "attack",
             "title": "Bad ant",
             "explanation": "Ants gain some attack power.",
             "cost": 20,
@@ -322,7 +322,7 @@
             "amount": 1
         },
         {
-            "icon": "🗡",
+            "icon": "attack",
             "title": "Rabies",
             "explanation": "Ants gain attack power.",
             "cost": 3,
@@ -332,7 +332,7 @@
             "amount": 5
         },
         {
-            "icon": "🗡",
+            "icon": "attack",
             "title": "Defense swap",
             "explanation": "Defense is the best attack. No, wait...",
             "cost": 3,
@@ -342,7 +342,7 @@
             "amount": 3
         },
         {
-            "icon": "🗡",
+            "icon": "attack",
             "title": "Martial arts club",
             "explanation": "Some ants join the training. The colony's power increases a little each turn.",
             "cost": 30,
@@ -352,7 +352,7 @@
             "amount": 0.1
         },
         {
-            "icon": "🗡",
+            "icon": "attack",
             "title": "Pet peeve",
             "explanation": "You are unlucky enough that your ants are always in a bad mood, ready to strike.",
             "cost": 10,
@@ -362,7 +362,7 @@
             "amount": 5
         },
         {
-            "icon": "💎",
+            "icon": "resistance",
             "title": "Unscratchable",
             "explanation": "Ants gain a lot of resistance.",
             "cost": 200,
@@ -372,7 +372,7 @@
             "amount": 10
         },
         {
-            "icon": "💎",
+            "icon": "resistance",
             "title": "Himbo",
             "explanation": "Ants get nicer, dumber, and buffer.",
             "cost": 3,
@@ -382,9 +382,9 @@
             "amount": 5
         },
         {
-            "icon": "💎",
+            "icon": "resistance",
             "title": "Training coach",
-            "explanation": "Soldiers train on Mondays. The colony's resistance increases a little each turn.",
+            "explanation": "Soldiers train the rest of the colony. Their resistance increases a little each turn.",
             "cost": 30,
             "costCurrency": "ants",
             "action": "change",
@@ -392,7 +392,7 @@
             "amount": 0.1
         },
         {
-            "icon": "💀",
+            "icon": "raid",
             "title": "Death whistle",
             "explanation": "Devise a masterplan to scare away this season's raid, if it hasn't happened yet.",
             "cost": 3,
@@ -402,7 +402,7 @@
             "amount": null
         },
         {
-            "icon": "💀",
+            "icon": "raid",
             "title": "Exodus",
             "explanation": "Move to better lands. Avoid this season's raid if it hasn't happened yet, but lose some ants in the way.",
             "cost": 50,
@@ -412,7 +412,7 @@
             "amount": null
         },
         {
-            "icon": "💀",
+            "icon": "raid",
             "title": "Flu fluke",
             "explanation": "The enemies fall sick. This season's raid gets cancelled if it hasn't happened yet.",
             "cost": 15,
@@ -424,7 +424,7 @@
     ],
     [
         {
-            "icon": "👩‍👩‍👧‍👦",
+            "icon": "people",
             "title": "Puppy eyes",
             "explanation": "They think we're cute, and they've got a ton of food.",
             "cost": 2,
@@ -434,7 +434,7 @@
             "amount": 5000
         },
         {
-            "icon": "👩‍👩‍👧‍👦",
+            "icon": "people",
             "title": "Anthropology major",
             "explanation": "What if we study them?",
             "cost": 5,
@@ -444,7 +444,7 @@
             "amount": 1
         },
         {
-            "icon": "👩‍👩‍👧‍👦",
+            "icon": "people",
             "title": "Domestication",
             "explanation": "Them, not us.",
             "cost": 5,
@@ -454,7 +454,7 @@
             "amount": 100
         },
         {
-            "icon": "👩‍👩‍👧‍👦",
+            "icon": "people",
             "title": "Word of mouth",
             "explanation": "It's not technically world domination.",
             "cost": 50,
@@ -464,7 +464,7 @@
             "amount": 200
         },
         {
-            "icon": "🌏",
+            "icon": "earth",
             "title": "World domination",
             "explanation": "Okay, but we were nice about it? (There's no turning back after taking this card).",
             "cost": 10000,

@@ -1,7 +1,7 @@
 import uuid from "react-uuid";
 import Card from "./Card";
 
-function Deck({cards, actionList, food, eggs, ants, people, fertility, intelligence, resistance, attack, luck, turn, raid}) {
+function Deck({svgs, cards, actionList, food, eggs, ants, people, fertility, intelligence, resistance, attack, luck, turn, raid}) {
     // When it's the raid turn, only the raid card is shown and there's no button to pass the turn without taking the card
     if (raid.turn === turn) {
         return (
@@ -9,14 +9,14 @@ function Deck({cards, actionList, food, eggs, ants, people, fertility, intellige
                 <h2>Deck</h2>
                 <div>
                     <div className="raid buyable card">
-                        <h3>💀&#xfe0f; Raid</h3>
+                        <h3>{svgs.raid} Raid</h3>
                         <div>
                             <div>
                                 <p>Lose ants and food, or resist and recruit the enemies.</p>
                             </div>
                             <div>
-                                <p>🗡&#xfe0f; attack: <span class="data">{raid.attack}</span></p>
-                                <p>🐜&#xfe0f; soldiers: <span class="data">{raid.soldiers}</span></p>
+                                <p>{svgs.attack} attack: <span className="data">{raid.attack}</span></p>
+                                <p>{svgs.ants} soldiers: <span className="data">{raid.soldiers}</span></p>
                             </div>
                         </div>
                         
@@ -24,11 +24,11 @@ function Deck({cards, actionList, food, eggs, ants, people, fertility, intellige
                             actionList['runRaid']();
                             actionList['buyFromDeck'](
                                 {
-                                    icon: "💀",
+                                    icon: 'raid',
                                     title: 'Raid',
                                     explanation: <>
-                                        <p>🗡&#xfe0f; attack: {raid.attack}</p>
-                                        <p>🐜&#xfe0f; soldiers: {raid.soldiers}</p>
+                                        {svgs.attack} attack: <span className="data">{raid.attack}</span><br/>
+                                        {svgs.ants} soldiers: <span className="data">{raid.soldiers}</span><br/>
                                     </>
                                 });
                             actionList['endTurn']();
@@ -86,6 +86,7 @@ function Deck({cards, actionList, food, eggs, ants, people, fertility, intellige
 
                         return <Card
                             key={uuid()}
+                            svgs={svgs}
                             icon={card.icon}
                             title={card.title}
                             explanation={card.explanation}
