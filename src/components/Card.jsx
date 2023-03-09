@@ -1,4 +1,7 @@
 function Card({svgs, icon, title, explanation, parameter, amount, cost, costCurrency, action, inDeck, buyable}) {
+    // When new cards are announced in the aria-live region, the elements are read without inserting pauses between paragraphs/headings
+    // This const is to insert a visually-hidden colon that will make the screen reader pause before reading the next element
+    const screenReaderPause = <span aria-label="."></span>;
 
     let parameterFixed;
 
@@ -29,8 +32,14 @@ function Card({svgs, icon, title, explanation, parameter, amount, cost, costCurr
     }
 
     return (
-        <div className={`${icon} ${buyable? 'buyable' : ''} card`}>
-            <h3>{svgs[icon]} {title}</h3>
+        <div className={`${icon} ${buyable? 'buyable' : ''} card`} aria-disabled={!(inDeck && buyable)}>
+            <h3>
+                {inDeck ?
+                    <>{buyable ?
+                        <button onClick={action}>{svgs[icon]} {title}{screenReaderPause}</button>
+                        : <button disabled>{svgs[icon]} {title}{screenReaderPause}</button>}</>
+                    : <>{svgs[icon]} {title}{screenReaderPause}</>}
+            </h3>
 
             <div>
                 <div>
@@ -41,8 +50,8 @@ function Card({svgs, icon, title, explanation, parameter, amount, cost, costCurr
                         {cost | amount ?
                         <>
                             <div>
-                                {amount ? <p><b>Gain:</b> <span className="data">{amount}</span> {svgs[parameterFixed.split(' ')[0]]}&#xfe0f; {parameterFixed}</p> : <></>}
-                                {cost ? <p><b>Cost:</b> <span className="data">{cost}</span> {svgs[costCurrency]}&#xfe0f; {costCurrency}</p> : <></>}
+                                {amount ? <p><b>Gain:</b> <span className="data">{amount}</span> {svgs[parameterFixed.split(' ')[0]]}&#xfe0f; {parameterFixed}{screenReaderPause}</p> : <></>}
+                                {cost ? <p><b>Cost:</b> <span className="data">{cost}</span> {svgs[costCurrency]}&#xfe0f; {costCurrency}{screenReaderPause}</p> : <></>}
                             </div>
                         </>
                         : ''}
@@ -50,8 +59,6 @@ function Card({svgs, icon, title, explanation, parameter, amount, cost, costCurr
                     ''
                 }
             </div>
-            
-            {inDeck ? <>{buyable ? <button onClick={action}>Take</button> : <button disabled>Take</button>}</> : ''}
         </div>
     );
 }

@@ -1,7 +1,7 @@
-function Help({ svgs, turnTotal, eggPointValue, foodPointValue }) {
+function Help({ svgs, turnTotal, hatchFrequency, eggPointValue, foodPointValue }) {
     return (
-        <section className="help">
-          <h2>Help</h2>
+        <section aria-labelledby="help" className="help">
+          <h2 id="help">Help</h2>
           <details>
             <summary>The game</summary>
                 <details>
@@ -11,6 +11,7 @@ function Help({ svgs, turnTotal, eggPointValue, foodPointValue }) {
                     <p>1 {svgs.ants} ant is worth 1 {svgs.points} point.</p>
                     <p>{eggPointValue} {svgs.eggs} eggs are worth 1 {svgs.points} point.</p>
                     <p>{foodPointValue} {svgs.food} food is worth 1 {svgs.points} point.</p>
+                    <p>To start a new game, simply refresh the page.</p>
                 </details>
                 <details>
                     <summary>About cards</summary>
@@ -21,7 +22,7 @@ function Help({ svgs, turnTotal, eggPointValue, foodPointValue }) {
                 <details>
                     <summary>About turns</summary>
                     <p>The game ends after {turnTotal} turns have passed. Turns are divided into 4 rounds ({svgs.autumn} seasons) of {turnTotal/4} turns each.</p>
-                    <p>Your turn progress can be viewed in the "time" panel. The current turn is outlined in a different color. Turns with a round shape signify hatching turns ({svgs.eggs} eggs hatch into {svgs.ants} ants when the turn ends). Turns with a bigger size mark the end of a {svgs.autumn} season.</p>
+                    <p>Your turn progress can be viewed in the "time" panel. Turns that are multiples of {hatchFrequency}, drawn with a round shape, signify hatching turns ({svgs.eggs} eggs hatch into {svgs.ants} ants when the turn ends). Turns drawn with a bigger size mark the end of a {svgs.autumn} season. The last turn, despite being a multiple of {hatchFrequency}, is not a hatching turn.</p>
                 </details>
           </details>
           <details>

@@ -241,60 +241,68 @@ function App() {
       <h1>Ant manager</h1>
       <div className="container">
         { (turn > turnTotal) ?
-          <Results
-          svgs={svgs}
-          people={stats.current.people}
-          ants={stats.current.ants}
-          eggs={stats.current.eggs}
-          food={stats.current.food}
-          eggPointValue={eggPointValue}
-          foodPointValue={foodPointValue}
-          cardsOnHand={cardsOnHand.current}/> :
-        <>
-          <Info
-            svgs={svgs}
-            people={stats.current.people}
-            peopleBonus={stats.current.peopleBonus}
-            ants={stats.current.ants}
-            eggs={stats.current.eggs}
-            food={stats.current.food}
-            fertility={stats.current.fertility}
-            fertilityBonus={stats.current.fertilityBonus}
-            intelligence={stats.current.intelligence}
-            intelligenceBonus={stats.current.intelligenceBonus}
-            resistance={stats.current.resistance}
-            resistanceBonus={stats.current.resistanceBonus}
-            attack={stats.current.attack}
-            attackBonus={stats.current.attackBonus}
-            luck={stats.current.luck}
-            luckBonus={stats.current.luckBonus}
-            turn={turn}
-            turnTotal={turnTotal}
-            hatchFrequency={hatchFrequency}
-            seasonFrequency={seasonFrequency}
-            season={season.current}
-            temperature={temperature.current}
-            idealTemperature={idealTemperature}
-            eggPointValue={eggPointValue}
-            foodPointValue={foodPointValue}/>
-          <Deck
-            svgs={svgs}
-            cards={cardsOnDeck.current}
-            actionList={actionList}
-            food={stats.current.food}
-            eggs={stats.current.eggs}
-            ants={stats.current.ants}
-            people={stats.current.people}
-            fertility={stats.current.fertility}
-            intelligence={stats.current.intelligence}
-            resistance={stats.current.resistance}
-            attack={stats.current.attack}
-            luck={stats.current.luck}
-            turn={turn}
-            raid={raid.current}
+          <div aria-live="polite" aria-atomic="true">
+            <Results
+              svgs={svgs}
+              people={stats.current.people}
+              ants={stats.current.ants}
+              eggs={stats.current.eggs}
+              food={stats.current.food}
+              eggPointValue={eggPointValue}
+              foodPointValue={foodPointValue}
+              cardsOnHand={cardsOnHand.current}
             />
-          <Hand svgs={svgs} cards={cardsOnHand.current} />
-        </> }
+          </div>
+           : 
+           <>
+           {/* This div needs to be here so that the screen reader takes note of its presence and announces the results when they load inside of it */}
+           <div aria-live="polite" aria-atomic="true"></div>
+            <Info
+              svgs={svgs}
+              people={stats.current.people}
+              peopleBonus={stats.current.peopleBonus}
+              ants={stats.current.ants}
+              eggs={stats.current.eggs}
+              food={stats.current.food}
+              fertility={stats.current.fertility}
+              fertilityBonus={stats.current.fertilityBonus}
+              intelligence={stats.current.intelligence}
+              intelligenceBonus={stats.current.intelligenceBonus}
+              resistance={stats.current.resistance}
+              resistanceBonus={stats.current.resistanceBonus}
+              attack={stats.current.attack}
+              attackBonus={stats.current.attackBonus}
+              luck={stats.current.luck}
+              luckBonus={stats.current.luckBonus}
+              turn={turn}
+              turnTotal={turnTotal}
+              hatchFrequency={hatchFrequency}
+              seasonFrequency={seasonFrequency}
+              season={season.current}
+              temperature={temperature.current}
+              idealTemperature={idealTemperature}
+              eggPointValue={eggPointValue}
+              foodPointValue={foodPointValue}/>
+              <Deck
+                svgs={svgs}
+                cards={cardsOnDeck.current}
+                actionList={actionList}
+                food={stats.current.food}
+                eggs={stats.current.eggs}
+                ants={stats.current.ants}
+                people={stats.current.people}
+                fertility={stats.current.fertility}
+                intelligence={stats.current.intelligence}
+                resistance={stats.current.resistance}
+                attack={stats.current.attack}
+                luck={stats.current.luck}
+                turn={turn}
+                raid={raid.current}
+                />
+              <Hand svgs={svgs} cards={cardsOnHand.current}
+            />
+          </>
+        }
       </div>
       <Footer />
     </>

@@ -19,7 +19,7 @@ $desktop-width: 40em;
 
 $border-radius: 10px;
 
-$deck-card-height: 17.5rem;
+$deck-card-height: 17rem;
 
 
 
@@ -51,7 +51,7 @@ $deck-card-height: 17.5rem;
 @mixin shadowed-animation-button {
     transition: all 0.05s;
 
-    &:hover {
+    &:hover:not(:disabled) {
         transform: translate(0.2rem, 0.2rem);
         box-shadow: none;
     }
@@ -88,6 +88,14 @@ $deck-card-height: 17.5rem;
     outline: none;
     background-color: $foreground;
     color: $background;
+
+    .svg-color-stroke {
+        stroke: $background;
+    }
+
+    .svg-color-stroke-fill {
+        fill: $background;
+    }
 }
 
 body {
@@ -111,10 +119,10 @@ details {
     
 
     summary {
+        font-family: 'Baloo 2', sans-serif;
         font-weight: bold;
         padding: 0.5rem;
-        @include border-radius;
-        
+        border-radius: calc($border-radius - 5px);
         cursor: pointer;
     }
 }
@@ -175,15 +183,14 @@ button {
     @extend section;
     @include shadowed-card;
     margin: 1.2rem 0.7rem;
-    width: 14rem;
+    width: 13rem;
 
     p {
         margin: 0;
     }
 
     h3 {
-        background-color: $background;
-        color: $foreground;
+        padding: 0;
     }
 
     > div {
@@ -200,16 +207,23 @@ button {
 
     button {
         position: relative;
-        margin: 0.8rem 2rem;
+        border: none;
+        border-radius: calc($border-radius - 2px) calc($border-radius - 2px) 0 0;
+        width: 100%;
+        padding: 0.5rem;
+
+        &:disabled {
+            opacity: 1  ;
+        }
     }
 
     button::after {
         content: '';
         position: absolute;
-        bottom: -1.5rem;
-        left: -2.5rem;
-        width: calc(100% + 5rem);
-        height: calc($deck-card-height + 1rem);
+        top: -1rem;
+        left: -0.5rem;
+        width: calc(100% + 1rem);
+        height: calc($deck-card-height + 2rem);
     }
 
     > div:last-of-type {
@@ -248,10 +262,6 @@ button {
 
     .stats {
         width: 100%;
-
-        p {
-            text-align: left;
-        }
     
         div {
             margin: 1rem;
@@ -260,6 +270,15 @@ button {
 
         @media (min-width: $desktop-width) {
             width: 70ch;
+        }
+
+        ul {
+            list-style: none;
+            
+            li {
+                text-align: left;
+                margin: 0.5rem;
+            }
         }
     }
 
@@ -439,11 +458,6 @@ svg {
         @include shadowed-animation-button;
     }
 
-    > div {
-        padding: 1rem;
-        @include flex-row-wrap-center;
-    }
-
     .card {
         height: $deck-card-height;
     }
@@ -456,24 +470,44 @@ svg {
 .hand {
     .card {
         height: 10rem;
-    }
 
-    > div {
-        @include flex-row-wrap-center;
+        h3 {
+            background-color: $background;
+            color: $foreground;
+            padding: 0.5rem;
+        }
+    }
+}
+
+.deck > ul,
+.hand > ul {
+    display: inline;
+    padding: 1rem;
+    @include flex-row-wrap-center;
+
+    li {
+        display: inline;
     }
 }
 
 .results {
-    div {
-        margin: 1rem auto;
-        @extend section;
+    > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-        p {
-            margin: 1rem 0;
-        }
-
-        @media (min-width: $desktop-width) {
-            max-width: 50ch;
+        div {
+            width: calc(100% - 2rem);
+            margin: 1rem;
+            @extend section;
+    
+            p {
+                margin: 1rem 0;
+            }
+    
+            @media (min-width: $desktop-width) {
+                max-width: 50ch;
+            }
         }
     }
 

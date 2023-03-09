@@ -1,11 +1,12 @@
 import TurnMarker from "./TurnMarker";
 
 function TurnCounter({ svgs, turn, turnTotal, hatchFrequency, seasonFrequency }) {
+
   return (
     <>
-      <p>Current turn: <span className="data">{turn}</span></p>
-      <p>Turns left: <span className="data">{turnTotal - turn+1}</span></p>
-      <div className="turn-viewer">
+      <p aria-atomic="true">Current turn: <span className="data">{`${turn}${!(turn % hatchFrequency) && turn !== turnTotal ? ' (egg hatching turn)' : '' }`}</span></p>
+      <p aria-atomic="true">Turns left: <span className="data">{turnTotal - turn+1}</span></p>
+      <div aria-hidden="true" className="turn-viewer">
         <div>
           {svgs.spring}
           { Array.apply(null, Array(turnTotal/4)).map(function (t, index) {

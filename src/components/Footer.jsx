@@ -1,6 +1,8 @@
 function Footer() {
     return (
-      <p>v. 0.18 (alpha): no mo mojis</p>
+      <footer>
+        <p>version <span class="data">0.19</span> (beta): screen-reader-readier</p>
+      </footer>
     );
   }
   

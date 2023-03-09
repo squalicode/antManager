@@ -3,23 +3,23 @@ import Card from "./Card";
 
 function Hand({ cards, svgs, parameter }) {
     return (
-        <section className="hand">
-            <h2>Hand</h2>
-            <div>
-                { cards.length ?
-                    cards.map( card =>
+        <section aria-labelledby="hand" className="hand">
+            <h2 id="hand">Hand</h2>
+            { cards.length ?
+                <ul>
+                    {cards.map( card =>
+                    <li key={uuid()}>
                         <Card
-                            key={uuid()}
-                            svgs={svgs}
-                            icon={card.icon}
-                            title={card.title}
-                            explanation={card.explanation}
-                            parameter={card.parameter}
+                        svgs={svgs}
+                        icon={card.icon}
+                        title={card.title}
+                        explanation={card.explanation}
+                        parameter={card.parameter}
                         />
-                    ) :
-                    <p>No cards played yet.</p>
-                }
-            </div>
+                    </li>)}
+                </ul>
+                : <p>No cards played yet.</p>
+            }
         </section>
     );
 }
