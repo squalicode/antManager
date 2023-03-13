@@ -1,34 +1,115 @@
 @import url(https://fonts.bunny.net/css?family=baloo-2:500,800);
 @import url(https://fonts.bunny.net/css?family=atkinson-hyperlegible:400,700);
 
-$background: #EFE9DC;
-$foreground: #302C29;
-
-$ants: #f2be99;
-$eggs: #fff;
-$food: #ebcc92;
-$fertility: #cec1cf;
-$intelligence: #f3d3d2;
-$resistance: #b5dAd6;
-$attack: #f0a298;
-$luck: #b1d9b8;
-$event: #bfbfb1;
-$secret: #c8d2df;
-
-$desktop-width: 40em;
-
+$desktop-width: 64em;
 $border-radius: 10px;
-
 $deck-card-height: 17rem;
 
+:root {
+    --background: #EFE9DC;
+    --foreground: #302C29;
+
+    --box-shadow: #302C29;
+
+    --ants: #f2be99;
+    --eggs: #fff;
+    --food: #ebcc92;
+    --fertility: #cec1cf;
+    --intelligence: #f3d3d2;
+    --resistance: #b5dAd6;
+    --attack: #f0a298;
+    --luck: #b1d9b8;
+    --event: #bfbfb1;
+    --secret: #c8d2df;
+
+    --disabled-opacity: 0.5;
+}
+
+.classic {
+    --background: #EFE9DC;
+    --foreground: #302C29;
+
+    --box-shadow: #302C29;
+
+    --ants: #f2be99;
+    --eggs: #fff;
+    --food: #ebcc92;
+    --fertility: #cec1cf;
+    --intelligence: #f3d3d2;
+    --resistance: #b5dAd6;
+    --attack: #f0a298;
+    --luck: #b1d9b8;
+    --event: #bfbfb1;
+    --secret: #c8d2df;
+
+    --disabled-opacity: 0.5;
+}
+
+.dark {
+    --background: #1f1d1c;
+    --foreground: #D2D0C6;
+
+    --box-shadow: #121211;
+
+    --ants: hsl(28, 34%, 27%);
+    --eggs: hsl(67, 10%, 37%);
+    --food: hsl(47, 39%, 25%);
+    --fertility: hsl(302, 20%, 25%);
+    --intelligence: hsl(345, 26%, 31%);
+    --resistance: hsl(166, 23%, 26%);
+    --attack: hsl(7, 41%, 25%);
+    --luck: hsl(81, 30%, 23%);
+    --event: hsl(51, 7%, 19%);
+    --secret: hsl(264, 20%, 25%);
+
+    --disabled-opacity: 0.3;
+
+    svg {
+        filter: brightness(2.8);
+    }
+
+    header,
+    h2,
+    section > div > h3,
+    .deck > button {
+        background-color: var(--event);
+        color: white;
+        filter: brightness(0.8);
+    }
+}
+
+.contrast {
+    --background: black;
+    --foreground: white;
+
+    --box-shadow: black;
+
+    --ants: #ff852e;
+    --eggs: white;
+    --food: rgb(230, 191, 0);
+    --fertility: #a25fff;
+    --intelligence: #ff74dc;
+    --resistance: #0ee2e2;
+    --attack: rgb(255, 67, 67);
+    --luck: #00dc5c;
+    --event: #959595;
+    --secret: #3898ff;
+
+    --disabled-opacity: 0.3;
+}
+
+.theme {
+    background-color: var(--background);
+    color: var(--foreground);
+}
 
 
 @mixin bordered {
-    border: 2px solid $foreground;
+    border: 2px solid var(--foreground);
 }
 
 @mixin shadowed-card {
-    box-shadow: 0.5rem 0.5rem 0 $foreground;
+    box-shadow: 0.5rem 0.5rem 0 var(--box-shadow);
 
     transition: all 0.3s;
 }
@@ -38,12 +119,16 @@ $deck-card-height: 17rem;
 
     &:hover {
         transform: translate(0, -1rem);
-        box-shadow: 0.5rem 1.5rem 0 $foreground;
+        box-shadow: 0.5rem 1.5rem 0 var(--box-shadow);
     }
 }
 
+@mixin shadowed-section {
+    box-shadow: 0.2rem 0.2rem 0 var(--box-shadow);
+}
+
 @mixin shadowed-button {
-    box-shadow: 0.2rem 0.2rem 0 $foreground;
+    box-shadow: 0.2rem 0.2rem 0 var(--foreground);
 
     transition: all 0.3s;
 }
@@ -70,9 +155,9 @@ $deck-card-height: 17rem;
 
 @mixin section-title {
     font-family: 'Baloo 2', sans-serif;
-    background-color: $foreground;
-    color: $background;
-    border-bottom: 2px solid $foreground;
+    background-color: var(--foreground);
+    color: var(--background);
+    border-bottom: 2px solid var(--foreground);
     border-top-left-radius: calc($border-radius - 3px);
     border-top-right-radius: calc($border-radius - 3px);
     font-weight: bold;
@@ -86,36 +171,39 @@ $deck-card-height: 17rem;
 
 :focus-visible {
     outline: none;
-    background-color: $foreground;
-    color: $background;
+    background-color: var(--foreground);
+    color: var(--background);
 
     .svg-color-stroke {
-        stroke: $background;
+        stroke: var(--background);
     }
 
     .svg-color-stroke-fill {
-        fill: $background;
+        fill: var(--background);
     }
 }
 
 body {
     font-family: 'Atkinson Hyperlegible', sans-serif;
     font-size: 0.9em;
-    background-color: $background;
-    color: $foreground;
+}
+
+footer p {
+    margin-bottom: 0;
+    padding-bottom: 1em;
 }
 
 section {
     @include bordered;
     @include border-radius;
-    @include shadowed-button;
+    @include shadowed-section;
     margin: 1rem 0.5rem;
 }
 
 details {
     @extend section;
     margin: 1rem;
-    @include shadowed-button;
+    @include shadowed-section;
     
 
     summary {
@@ -128,7 +216,7 @@ details {
 }
 
 hr {
-    border: 1px solid $foreground;
+    border: 1px solid var(--foreground);
     margin: 0.7rem 0;
 }
 
@@ -152,27 +240,39 @@ h3 {
 h1 {
     padding: 0.4rem 0.7rem;
     font-size: 1.4em;
-    @include section-title;
+    font-family: 'Baloo 2', sans-serif;
     border-radius: 0;
-    background-color: opacify($foreground, 0.2);
 }
 
 button {
     cursor: pointer;
-    padding: 0.2rem;
     @include border-radius;
     @include bordered;
-    border-color: $foreground;
-    background-color: $background;
-    color: $foreground;
+    border-color: var(--foreground);
+    background-color: var(--background);
+    color: var(--foreground);
     font-weight: bold;
     font-family: 'Baloo 2', sans-serif;
     font-size: 1em;
 
     &:disabled {
         cursor: auto;
-        opacity: 0.5;
-        border-color: $foreground;
+        opacity: var(--disabled-opacity);
+        border-color: var(--foreground);
+    }
+}
+
+header {
+    @include section-title;
+    border-radius: 0;
+    display: flex;
+        justify-content: space-between;
+        align-items: center;    
+
+    select {
+        margin: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        @extend button;
     }
 }
 
@@ -199,7 +299,7 @@ button {
 
         > div  {
             @include border-radius;
-            background-color: $background;
+            background-color: var(--background);
             padding: 0.5rem;
             margin: 0.5rem 0;
         }
@@ -213,7 +313,7 @@ button {
         padding: 0.5rem;
 
         &:disabled {
-            opacity: 1  ;
+            opacity: 1;
         }
     }
 
@@ -240,7 +340,7 @@ button {
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.2em;
     font-weight: bold;
-    color: $foreground;
+    color: var(--foreground);
 }
 
 
@@ -325,7 +425,7 @@ button {
                 height: 0.5rem;
                 padding: 0.3rem;
                 margin: 8px;
-                background-color: $background;
+                background-color: var(--background);
                 font-size: 0.8em;
             }
     
@@ -340,57 +440,57 @@ button {
             }
             
             .turn-viewer__turn-marker--done {
-                background-color: $foreground;
-                color: $background;
+                background-color: var(--foreground);
+                color: var(--background);
             }
             
             .turn-viewer__turn-marker--current {
-                outline: 3px solid $foreground;
+                outline: 3px solid var(--foreground);
             }
         }
     }
 }
 
 .ants {
-    background-color: $ants;
+    background-color: var(--ants);
 }
 
 .eggs {
-    background-color: $eggs;
+    background-color: var(--eggs);
 }
 
 .food {
-    background-color: $food;
+    background-color: var(--food);
 }
 
 .fertility {
-    background-color: $fertility;
+    background-color: var(--fertility);
 }
 
 .intelligence {
-    background-color: $intelligence;
+    background-color: var(--intelligence);
 }
 
 .resistance {
-    background-color: $resistance;
+    background-color: var(--resistance);
 }
 
 .attack {
-    background-color: $attack;
+    background-color: var(--attack);
 }
 
 .luck{
-    background-color: $luck;
+    background-color: var(--luck);
 }
 
 .eclosion,
 .raid {
-    background-color: $event;
+    background-color: var(--event);
 }
 
 .people,
 .earth {
-    background-color: $secret;
+    background-color: var(--secret);
 }
 
 svg {
@@ -402,52 +502,117 @@ svg {
     stroke-linejoin: round;
 }
 
-.svg-color-stroke {
-    stroke: $foreground;
+.dark svg,
+.contrast svg {
+    fill: none;
 }
 
-.svg-color-stroke-fill {
-    fill: $foreground;
+.svg-ants .svg-color-stroke {
+    stroke: var(--ants);
 }
 
-.svg-color-ants {
-    fill: $ants;
+.svg-eggs .svg-color-stroke {
+    stroke: var(--eggs);
 }
 
-.svg-color-eggs {
-    fill: $eggs;
+.svg-food .svg-color-stroke {
+    stroke: var(--food);
 }
 
-.svg-color-food {
-    fill: $food;
+.svg-food .svg-color-stroke-fill {
+    fill: var(--food);
 }
 
-.svg-color-fertility {
-    fill: $fertility;
+.svg-fertility .svg-color-stroke {
+    stroke: var(--fertility);
 }
 
-.svg-color-intelligence {
-    fill: $intelligence;
+.svg-intelligence .svg-color-stroke {
+    stroke: var(--intelligence);
 }
 
-.svg-color-resistance {
-    fill: $resistance;
+.svg-intelligence .svg-color-stroke-fill {
+    fill: var(--intelligence);
 }
 
-.svg-color-attack {
-    fill: $attack;
+.svg-resistance .svg-color-stroke {
+    stroke: var(--resistance);
 }
 
-.svg-color-luck {
-    fill: $luck;
+.svg-resistance .svg-color-stroke-fill {
+    fill: var(--resistance);
 }
 
-.svg-color-event {
-    fill: $event;
+.svg-attack .svg-color-stroke {
+    stroke: var(--attack);
 }
 
-.svg-color-secret {
-    fill: $secret;
+.svg-attack .svg-color-stroke-fill {
+    fill: var(--attack);
+}
+
+.svg-luck .svg-color-stroke {
+    stroke: var(--luck);
+}
+
+.svg-event .svg-color-stroke {
+    stroke: var(--event);
+}
+
+.svg-event .svg-color-stroke-fill {
+    fill: var(--event);
+}
+
+.svg-secret .svg-color-stroke {
+    stroke: var(--secret);
+}
+
+.classic .svg-color-stroke {
+    stroke: var(--foreground);
+}
+
+.classic .svg-color-stroke-fill {
+    fill: var(--foreground);
+}
+
+.classic .svg-color-ants {
+    fill: var(--ants);
+}
+
+.classic .svg-color-eggs {
+    fill: var(--eggs);
+}
+
+.classic .svg-color-food {
+    fill: var(--food);
+}
+
+.classic .svg-color-fertility {
+    fill: var(--fertility);
+}
+
+.classic .svg-color-intelligence {
+    fill: var(--intelligence);
+}
+
+.classic .svg-color-resistance {
+    fill: var(--resistance);
+}
+
+.classic .svg-color-attack {
+    fill: var(--attack);
+}
+
+.classic .svg-color-luck {
+    fill: var(--luck);
+}
+
+.classic .svg-color-event {
+    fill: var(--event);
+}
+
+.classic .svg-color-secret {
+    fill: var(--secret);
 }
 
 .deck {
@@ -463,7 +628,7 @@ svg {
     }
 
     .card:not(.buyable) {
-        opacity: 0.6;
+        opacity: var(--disabled-opacity);
     }
 }
 
@@ -472,8 +637,8 @@ svg {
         height: 10rem;
 
         h3 {
-            background-color: $background;
-            color: $foreground;
+            background-color: var(--background);
+            color: var(--foreground);
             padding: 0.5rem;
         }
     }
@@ -520,12 +685,16 @@ svg {
 
     .secret-points {
         @extend .points;
-        color: $foreground;
+        color: var(--foreground);
     }
 }
 
 
 @media (min-width: $desktop-width) {
+    header {
+        padding: 0 3.5em;
+    }
+
     .container {
         padding: 0.5em 3.5em;
     }

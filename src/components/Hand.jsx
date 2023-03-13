@@ -1,7 +1,7 @@
 import uuid from "react-uuid";
 import Card from "./Card";
 
-function Hand({ cards, svgs, parameter }) {
+function Hand({ cards, svgs }) {
     return (
         <section aria-labelledby="hand" className="hand">
             <h2 id="hand">Hand</h2>
