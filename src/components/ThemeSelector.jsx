@@ -5,7 +5,7 @@ function ThemeSelector({onChange, selected}) {
             <select value={selected} name="theme" onChange={e => onChange(e.target.value)}>
                 <option value="classic">Classic</option>
                 <option value="dark">Dark</option>
-                <option value="contrast">High contrast dark</option>
+                <option value="contrast">High contrast</option>
             </select>
         </label>
     );

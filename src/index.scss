@@ -74,7 +74,7 @@ $deck-card-height: 17rem;
     .deck > button {
         background-color: var(--event);
         color: white;
-        filter: brightness(0.8);
+        filter: brightness(0.9);
     }
 }
 
@@ -267,12 +267,14 @@ header {
     border-radius: 0;
     display: flex;
         justify-content: space-between;
-        align-items: center;    
+        align-items: center;   
+    padding: 0.8em 0.5em; 
 
     select {
-        margin: 0.5rem;
-        padding: 0.2rem 0.5rem;
+        margin-left: 0.5rem;
+        padding: 0.2rem 0.4rem;
         @extend button;
+        font-size: 0.9em;
     }
 }
 
@@ -692,7 +694,7 @@ svg {
 
 @media (min-width: $desktop-width) {
     header {
-        padding: 0 3.5em;
+        padding: 0.5em 4em;
     }
 
     .container {
