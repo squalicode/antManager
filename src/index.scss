@@ -618,6 +618,60 @@ svg {
     fill: var(--secret);
 }
 
+.twitter svg {
+    fill: var(--resistance);
+}
+
+.whatsapp svg {
+    fill: var(--luck);
+}
+
+.telegram svg {
+    fill: var(--resistance);
+}
+
+.reddit svg {
+    fill: var(--attack);
+}
+
+.facebook svg {
+    fill: var(--resistance);
+}
+
+.copy svg {
+    stroke: var(--foreground);
+}
+
+.classic .share {
+    li svg {
+        fill: var(--foreground);
+    }
+
+    .twitter {
+        background-color: var(--resistance);
+    }
+    
+    .whatsapp {
+        background-color: var(--luck);
+    }
+
+    .telegram {
+        background-color: var(--resistance);
+    }
+
+    .reddit {
+        background-color: var(--attack);
+    }
+
+    .facebook {
+        background-color: var(--resistance);
+    }
+
+    .copy svg {
+        fill: transparent;
+    }
+}
+
 .deck {
     > button {
         margin: 1rem 0 2rem 0;
@@ -659,18 +713,16 @@ svg {
 }
 
 .results {
-    > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
 
-        div {
+    > div {
+        > div,
+        > details {
             width: calc(100% - 2rem);
-            margin: 1rem;
+            margin: 1.5rem auto;
             @extend section;
     
             p {
-                margin: 1rem 0;
+                margin: 0.5rem 0.2rem;
             }
     
             @media (min-width: $desktop-width) {
@@ -689,6 +741,74 @@ svg {
     .secret-points {
         @extend .points;
         color: var(--foreground);
+    }
+
+    .share {
+        blockquote {
+            @extend section;
+            padding: 1.5em 0.8em;
+
+            &::before {
+                content: open-quote;
+                float: left;
+            }
+
+            &::after {
+                content: close-quote;
+                float: right;
+            }
+
+            &::before,
+            &::after {
+                display: block;
+                position: relative;
+                top: 0.25em;
+                font-size: 4em;
+                line-height: 0;
+            }
+        }
+
+        blockquote,
+        ul {
+            margin: 1.5rem;
+        }
+
+        a {
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: $border-radius;
+
+            &:focus svg {
+                fill: var(--background);
+            }
+        }
+
+        .copy button:focus svg {
+            stroke: var(--background) !important;
+        }
+
+        ul {
+            @include flex-row-wrap-center;
+            list-style-type: none;
+
+            li {
+                @extend button;
+                @include shadowed-button;
+                @include shadowed-animation-button;
+                margin: 1rem;
+
+                button {
+                    border: none;
+                }
+            }
+
+            svg {
+                width: 2.7rem;
+                height: 2.7rem;
+                padding: 0.4rem;
+            }
+        }
     }
 }
 
