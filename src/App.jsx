@@ -101,8 +101,10 @@ function App() {
 
     searchFood: () => {
       if (stats.current.ants) {
-        let foundFood = stats.current.ants*(stats.current.luck/10 - Math.abs(idealTemperature-temperature.current)/(stats.current.resistance + 20));
-        if (foundFood < 0) {foundFood = 0};
+        const tempDelta = Math.abs(idealTemperature-temperature.current);
+        const tempPenalty = Math.max(1, tempDelta / Math.max(1, (stats.current.resistance * 0.5)));
+        const foodMultiplier = stats.current.luck * 0.1 / tempPenalty;
+        let foundFood = Math.max(0, stats.current.ants * foodMultiplier);
         // Round to 1 decimal point
         actionList['change']('food', foundFood);
       }
