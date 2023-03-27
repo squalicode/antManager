@@ -1,7 +1,7 @@
 function Footer() {
     return (
       <footer>
-        <p>version <span className="data">0.21</span> (beta): resistance revised</p>
+        <p>version <span className="data">0.22</span> (beta): raid generation fixes</p>
       </footer>
     );
   }

@@ -109,7 +109,7 @@
             "costCurrency": "food",
             "action": "change",
             "parameter": "fertilityBonus",
-            "amount": 0.1
+            "amount": 0.2
         },
         {
             "icon": "fertility",
@@ -129,7 +129,7 @@
             "costCurrency": "intelligence",
             "action": "change",
             "parameter": "fertilityBonus",
-            "amount": 0.2
+            "amount": 0.5
         },
         {
             "icon": "intelligence",
@@ -140,16 +140,6 @@
             "action": "change",
             "parameter": "intelligenceBonus",
             "amount": 0.1
-        },
-        {
-            "icon": "intelligence",
-            "title": "The smarts",
-            "explanation": "Be well fed, get smarter.",
-            "cost": 100,
-            "costCurrency": "food",
-            "action": "change",
-            "parameter": "intelligence",
-            "amount": 1
         },
         {
             "icon": "intelligence",
@@ -175,7 +165,7 @@
             "icon": "intelligence",
             "title": "Therapist",
             "explanation": "Let it all out.",
-            "cost": 30,
+            "cost": 50,
             "costCurrency": "food",
             "action": "change",
             "parameter": "intelligence",

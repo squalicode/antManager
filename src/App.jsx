@@ -89,6 +89,10 @@ function App() {
     soldiers: 0
   });
 
+  function randomBetween(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
   // Functions are defined as properties in this object because
   // their names are referenced as a string in cards.json.
   // since each card can call a different function when bought.
@@ -135,35 +139,47 @@ function App() {
       };
     },
 
-    generateRaid: () => {
+    generateRaidTurn: () => {
+      // Decide at which turn the raid will arrive (inside of the season's turns)
+      // Don't generate raids in the first or last turns of a season,
+      // so that raids have at least 2 turns of margin from each other
+      switch (season.current) {
+        case 'summer':
+          raid.current.turn = Math.round(randomBetween(seasonFrequency+1, seasonFrequency*2-1));
+          break;
+        case 'autumn':
+          raid.current.turn = Math.round(randomBetween(seasonFrequency*2+1, seasonFrequency*3-1));
+          break;
+        default:
+          raid.current.turn = Math.round(randomBetween(seasonFrequency*3+1, seasonFrequency*4-1));
+          break;
+      }
+    },
+
+    generateRaidStats: () => {
       let minAttackStrength = 0;
       let maxAttackStrength = 0;
 
-      // Decide at which turn the raid will arrive (inside of the season's turns)
       switch (season.current) {
         case 'summer':
-          raid.current.turn = Math.round(Math.random() * (seasonFrequency*2 - seasonFrequency) + seasonFrequency);
-          maxAttackStrength = 5 - stats.current.luck/2;
+          maxAttackStrength = 5 - Math.max(0, stats.current.luck/2);
           minAttackStrength = 1;
           break;
         case 'autumn':
-          raid.current.turn = Math.round(Math.random() * (seasonFrequency*3 - seasonFrequency*2) + seasonFrequency*2);
-          maxAttackStrength = 10 - stats.current.luck/2;
-          minAttackStrength = 5;
+          maxAttackStrength = 11 - Math.max(0, stats.current.luck/2);
+          minAttackStrength = 3;
           break;
         default:
-          // Don't generate a raid in the last turn
-          raid.current.turn = Math.round(Math.random() * ((seasonFrequency*4-1) - seasonFrequency*3) + seasonFrequency*3);
-          maxAttackStrength = 20 - stats.current.luck/2;
-          minAttackStrength = 10;
+          maxAttackStrength = 14 - Math.max(0, stats.current.luck/2);
+          minAttackStrength = 6;
           break;
       }
 
       // Generate attack (raids get stronger each season that passes, and luck influences the attack generated)
-      raid.current.attack = Math.round(Math.random() * (maxAttackStrength - minAttackStrength) + minAttackStrength);
+      raid.current.attack = Math.round(randomBetween(minAttackStrength, maxAttackStrength));
 
       // Generate ant amount
-      raid.current.soldiers = Math.round(Math.random() * ((stats.current.ants + 100) - 50) + 50);
+      raid.current.soldiers = Math.round(randomBetween(stats.current.ants*0.8, stats.current.ants*1.2));
     },
 
     runRaid: () => {
@@ -203,21 +219,25 @@ function App() {
         switch (turn) {
           case seasonFrequency:
             season.current = 'summer';
-            actionList['generateRaid']();
+            actionList['generateRaidTurn']();
             break;
           case seasonFrequency*2:
             season.current = 'autumn';
-            actionList['generateRaid']();
+            actionList['generateRaidTurn']();
             break;
           default:
             season.current = 'winter';
-            actionList['generateRaid']();
+            actionList['generateRaidTurn']();
             break;
         }
       }
 
+      // If the next turn is the raid's turn, generate a raid so that the deck can use its stats later
+      // The raid's stats need to be generated just before showing the card because they depend on our current stats
+      if (turn+1 === raid.current.turn) { actionList['generateRaidStats'](); }
+
       // Change temperature
-      const turnVariation = Math.round(Math.random() * (temperatureVariation - temperatureVariation*-1) + temperatureVariation*-1);
+      const turnVariation = Math.round(randomBetween(temperatureVariation*-1, temperatureVariation));
       temperature.current = baseTemperatures[season.current] + turnVariation;
 
       // Turn-based bonuses
