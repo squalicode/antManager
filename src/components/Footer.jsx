@@ -1,7 +1,7 @@
 function Footer() {
     return (
       <footer>
-        <p>version <span className="data">1.0</span>: sharing is caring</p>
+        <p>version <span className="data">1.0.1</span>: sharing is caring</p>
       </footer>
     );
   }

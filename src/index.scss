@@ -119,8 +119,10 @@ $deck-card-height: 17rem;
     transition: all 0.3s;
 
     &:hover {
-        transform: translate(0, -1rem);
-        box-shadow: 0.5rem 1.5rem 0 var(--box-shadow);
+        @media (prefers-reduced-motion: no-preference) {
+            transform: translate(0, -1rem);
+            box-shadow: 0.5rem 1.5rem 0 var(--box-shadow);
+        }
     }
 }
 
