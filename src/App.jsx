@@ -261,11 +261,19 @@ function App() {
   }
 
   function saveTheme(theme) {
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (error) {
+      
+    }
   }
 
   function getTheme() {
-    return localStorage.getItem('theme') ? localStorage.getItem('theme') : 'classic';
+    try {
+      return localStorage.getItem('theme') ? localStorage.getItem('theme') : 'classic';
+    } catch (error) {
+      return 'classic';
+    }
   }
 
   function changeTheme(theme) {
